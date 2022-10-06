@@ -41,13 +41,16 @@ export class AppComponent implements OnInit {
 
   btnSalvar() {
     this.model.data = new Date();
+    this.afAuth.createUserWithEmailAndPassword(this.model.email || '', this.model.senha || '');
     this.afs.collection('usuarios').add(this.model).then();
-    //this.cadastroForm.reset();
-    //this.model = {};
+    this.model = {};
+    this.cadastroForm.reset();
+    
+    //this.afAuth.signInWithEmailAndPassword(this.model.email || '', this.model.senha || '');
   }
 
   btnEsqueciSenha() {
-    console.log('esqueci senha')
+    this.afAuth.sendPasswordResetEmail(this.model.email || '');
   }
 }
 
