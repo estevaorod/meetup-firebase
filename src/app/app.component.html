@@ -1,6 +1,6 @@
-<div class="container pt-5">
+<div class="container pt-5 h-100" style="background-color: #ececec;">
   <div class="row">
-    <div class="col-5">
+    <div class="col-5 offset-1">
       <form nz-form [formGroup]="cadastroForm">
         <nz-form-item>
           <nz-form-control>
@@ -9,7 +9,7 @@
         </nz-form-item>
         <nz-form-item>
           <nz-form-control>
-            <input type="passaword" placeholder="Senha" nz-input formControlName="senha" [(ngModel)]="model.senha">
+            <input type="password" placeholder="Senha" nz-input formControlName="senha" [(ngModel)]="model.senha">
           </nz-form-control>
         </nz-form-item>
         <div class="d-flex justify-content-evenly">
@@ -18,18 +18,18 @@
         </div>
       </form>
     </div>
-    <div class="col-5 offset-2">
+    <div class="col-5">
       <nz-table #basicTable [nzData]="listData">
         <thead>
           <tr>
-            <th>
+            <th class="text-center">
               E-mail
             </th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let data of basicTable.data">
-            <td>
+            <td class="text-center">
               {{data.email}}
             </td>
           </tr>

@@ -40,7 +40,6 @@ export class AppComponent implements OnInit {
   }
 
   btnSalvar() {
-    this.model.data = new Date();
     this.afAuth.createUserWithEmailAndPassword(this.model.email || '', this.model.senha || '');
     this.afs.collection('usuarios').add(this.model).then();
     this.model = {};
@@ -57,5 +56,4 @@ export class AppComponent implements OnInit {
 export interface IUserModel {
   email?: string;
   senha?: string;
-  data?: Date;
 }
