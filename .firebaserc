@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "meetup-firebase-6a14f": {
+      "hosting": {
+        "meetup": [
+          "meetup-firebase-6a14f"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "meetup-firebase-6a14f"
+  }
+}
