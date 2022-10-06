@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
   selector: 'app-root',
@@ -12,9 +14,12 @@ export class AppComponent implements OnInit {
   listData: IUserModel[] = [];
 
   cadastroForm: FormGroup;
+  model: IUserModel = {};
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private afs: AngularFirestore,
+    private afAuth: AngularFireAuth,
   ) { }
 
   ngOnInit(): void {
@@ -22,20 +27,32 @@ export class AppComponent implements OnInit {
       email: [null],
       senha: [null]
     });
+    this.obter();
   }
 
-  btnSalvar(){
-    debugger;
-    console.log('salvar')
+  obter() {
+    this.afs.collection('usuarios').valueChanges()
+    .subscribe(
+      r => {
+        this.listData = r.map(x => <IUserModel>x);
+      }
+    );
   }
 
-  btnEsqueciSenha(){
+  btnSalvar() {
+    this.model.data = new Date();
+    this.afs.collection('usuarios').add(this.model).then();
+    //this.cadastroForm.reset();
+    //this.model = {};
+  }
+
+  btnEsqueciSenha() {
     console.log('esqueci senha')
   }
 }
 
 export interface IUserModel {
-  nome: string;
-  senha: string;
-  data: Date;
+  email?: string;
+  senha?: string;
+  data?: Date;
 }

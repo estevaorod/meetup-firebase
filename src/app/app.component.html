@@ -4,12 +4,12 @@
       <form nz-form [formGroup]="cadastroForm">
         <nz-form-item>
           <nz-form-control>
-            <input type="text" placeholder="E-mail" nz-input formControlName="email">
+            <input type="text" placeholder="E-mail" nz-input formControlName="email" [(ngModel)]="model.email">
           </nz-form-control>
         </nz-form-item>
         <nz-form-item>
           <nz-form-control>
-            <input type="passaword" placeholder="Senha" nz-input formControlName="senha">
+            <input type="passaword" placeholder="Senha" nz-input formControlName="senha" [(ngModel)]="model.senha">
           </nz-form-control>
         </nz-form-item>
         <div class="d-flex justify-content-evenly">
@@ -23,20 +23,14 @@
         <thead>
           <tr>
             <th>
-              Nome
-            </th>
-            <th>
-              Data
+              E-mail
             </th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let data of basicTable.data">
             <td>
-              {{data.nome}}
-            </td>
-            <td>
-              {{data.data}}
+              {{data.email}}
             </td>
           </tr>
         </tbody>

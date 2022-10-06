@@ -1,5 +1,5 @@
 export const environment = {
-  firebase: {
+  firebaseConfig: {
     projectId: 'meetup-firebase-6a14f',
     appId: '1:582531372170:web:d31d7758c330cfd56b4973',
     storageBucket: 'meetup-firebase-6a14f.appspot.com',
